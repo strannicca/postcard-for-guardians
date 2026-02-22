@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Страница 2 с иконками</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Фон на весь экран */
+body {
+    background-image: url("blue.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Основной контейнер */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Левая картинка */
+.left-img img {
+    width: 322px;
+    height: 497px;
+    object-fit: cover;
+}
+
+/* Правая колонка */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 497px;
+    gap: 20px;
+}
+
+/* Правая колонка — картинки */
+.right-column img {
+    object-fit: cover;
+}
+
+/* Точные размеры правых картинок */
+.right-column img:nth-child(1) {
+    width: 718px;
+    height: 125px;
+    position: relative; /* контейнер для иконок сверху */
+}
+
+.right-column img:nth-child(2) {
+    width: 713px;
+    height: 340px;
+}
+
+/* Контейнер для маленьких иконок поверх правой верхней картинки */
+.icons-row {
+    position: absolute;
+    display: flex;
+    gap: 7px;
+    top: 60px;    /* отступ от верхнего края картинки */
+    left: 25px;   /* отступ от левого края картинки */
+}
+
+/* Маленькие иконки */
+.icons-row .icon {
+    width: 77px;
+    height: 49px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icons-row .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Текст поверх иконки */
+.icons-row .icon span {
+    position: absolute;
+    bottom: -20px; /* под иконкой */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Hover эффект */
+.icons-row .icon:hover {
+    transform: scale(1.1);
+}
+
+.icons-row .icon:hover span {
+    opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-img">
+        <img src="СМ.png" alt="Левая картинка">
+    </div>
+    <div class="right-column">
+        <div style="position: relative; display: inline-block;">
+            <img src="для-иконок.png" alt="Правая верхняя">
+
+            <!-- Ряд маленьких иконок поверх правой верхней картинки -->
+            <div class="icons-row">
+                <div class="icon">
+                    <img src="сила.png" alt="иконка 1">
+                    <span>Текст 1</span>
+                </div>
+                <div class="icon">
+                    <img src="меч.png" alt="иконка 2">
+                    <span>Текст 2</span>
+                </div>
+                <div class="icon">
+                    <img src="стресс.png" alt="иконка 3">
+                    <span>Текст 3</span>
+                </div>
+                <div class="icon">
+                    <img src="интеллект .png" alt="иконка 4">
+                    <span>Текст 4</span>
+                </div>
+                <div class="icon">
+                    <img src="харизма.png" alt="иконка 5">
+                    <span>Текст 5</span>
+                </div>
+                <div class="icon">
+                    <img src="ловкость.png" alt="иконка 6">
+                    <span>Текст 6</span>
+                </div>
+                <div class="icon">
+                    <img src="компаньон .png" alt="иконка 7">
+                    <span>Текст 7</span>
+                </div>
+                <div class="icon">
+                    <img src="защита.png" alt="иконка 8">
+                    <span>Текст 8</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Правая нижняя картинка -->
+        <img src="папирус.png" alt="Правая нижняя">
+    </div>
+</div>
+
+</body>
+</html>
