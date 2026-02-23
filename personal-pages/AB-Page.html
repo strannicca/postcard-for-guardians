@@ -249,5 +249,28 @@ body {
     </div>
 </div>
 
+<!-- ▼ Кастомное всплывающее уведомление -->
+<div id="custom-alert">
+    <div id="alert-box">
+        <p>Привет! Добро пожаловать на открытку!</p>
+        <button id="alert-ok">Ок</button>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    const alertDiv = document.getElementById("custom-alert");
+    const okBtn = document.getElementById("alert-ok");
+
+    // показываем уведомление (по умолчанию оно видно)
+    alertDiv.style.display = "flex";
+
+    // при нажатии на кнопку "Ок" скрываем уведомление
+    okBtn.onclick = function() {
+        alertDiv.style.display = "none";
+    };
+};
+</script>
+
 </body>
 </html>
