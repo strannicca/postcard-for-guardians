@@ -198,33 +198,18 @@ body {
             </div>
         </div>
 
-        <!-- Правая нижняя картинка с текстом -->
+        <!-- Правая нижняя картинка с статичным текстом -->
         <div class="text-block">
             <img class="bottom-banner" src="../icons/for-text.webp" alt="Текст">
-            <div id="card-text" class="card-text"></div>
+            <div class="card-text">
+                Привет! 🎉<br>
+                Это твоя персональная открытка.<br>
+                Улыбайся и наслаждайся! 🌟
+            </div>
         </div>
 
     </div>
 </div>
-
-<script>
-const text = `Привет! 🎉
-Это твоя персональная открытка.
-Улыбайся и наслаждайся! 🌟`;
-
-const container = document.getElementById("card-text");
-let index = 0;
-
-function typeWriter() {
-    if (index < text.length) {
-        container.innerHTML += text[index];
-        index++;
-        setTimeout(typeWriter, 80); // скорость печати
-    }
-}
-
-typeWriter();
-</script>
 
 </body>
 </html>
