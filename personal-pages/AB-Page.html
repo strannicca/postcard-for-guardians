@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Персональная открытка</title>
-<!-- ВОТ СЮДА вставляется favicon -->
 <link rel="icon" href="../index-files/favicon.ico" type="image/x-icon">
 <style>
 html, body {
@@ -13,7 +12,7 @@ html, body {
     overflow: hidden;
 }
 
-/* ▼ Подключаем кастомный шрифт */
+/* ▼ Кастомный шрифт */
 @font-face {
     font-family: 'MyFont';
     src: url('../index-files/rudew.ttf') format('truetype');
@@ -61,25 +60,28 @@ body {
     object-fit: cover;
 }
 
-/* Точные размеры правых картинок */
-.right-column img.top-banner {
+/* Верхняя правая картинка с иконками */
+.top-banner {
     width: 718px;
     height: 125px;
-    position: relative; /* контейнер для иконок сверху */
+    position: relative;
+    z-index: 3; /* иконки поверх всего */
 }
 
-.right-column img.bottom-banner {
+/* Точные размеры нижней картинки */
+.bottom-banner {
     width: 713px;
     height: 340px;
 }
 
-/* Контейнер для маленьких иконок поверх правой верхней картинки */
+/* Контейнер для маленьких иконок */
 .icons-row {
     position: absolute;
     display: flex;
     gap: 7px;
-    top: 60px;    /* отступ от верхнего края картинки */
-    left: 25px;   /* отступ от левого края картинки */
+    top: 60px;
+    left: 25px;
+    z-index: 4; /* всегда сверху */
 }
 
 /* Маленькие иконки */
@@ -99,10 +101,9 @@ body {
     border-radius: 4px;
 }
 
-/* Текст поверх иконки */
 .icons-row .icon span {
     position: absolute;
-    bottom: -40px; /* под иконкой */
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
@@ -113,7 +114,6 @@ body {
     pointer-events: none;
 }
 
-/* Hover эффект */
 .icons-row .icon:hover {
     transform: scale(1.1);
 }
@@ -122,11 +122,12 @@ body {
     opacity: 1;
 }
 
-/* ▼ Стили для нижней картинки с текстом */
+/* ▼ Нижняя картинка с текстом */
 .text-block {
     position: relative;
     width: 713px;
     height: 340px;
+    z-index: 1; /* нижний слой */
 }
 
 .text-block img {
@@ -147,7 +148,8 @@ body {
     line-height: 1.5;
     font-family: 'MyFont', sans-serif;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-    white-space: pre-wrap; /* переносы строк */
+    white-space: pre-wrap;
+    z-index: 2; /* текст поверх нижней картинки */
 }
 </style>
 </head>
@@ -157,6 +159,7 @@ body {
     <div class="left-img">
         <img src="../avatars/AB.webp" alt="Портрет">
     </div>
+
     <div class="right-column">
         <!-- Правая верхняя картинка с иконками -->
         <div style="position: relative; display: inline-block;">
@@ -181,7 +184,7 @@ body {
                 </div>
                 <div class="icon">
                     <img src="../icons/my-muscles-and-charisma.webp" alt="харизма">
-                   <span>Харизма <br> 10 из 10</span>
+                    <span>Харизма <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/dexter.webp" alt="ловкость">
@@ -198,7 +201,7 @@ body {
             </div>
         </div>
 
-        <!-- Правая нижняя картинка с статичным текстом -->
+        <!-- Правая нижняя картинка с текстом -->
         <div class="text-block">
             <img class="bottom-banner" src="../icons/for-text.webp" alt="Текст">
             <div class="card-text">
@@ -207,7 +210,6 @@ body {
                 Улыбайся и наслаждайся! 🌟
             </div>
         </div>
-
     </div>
 </div>
 
