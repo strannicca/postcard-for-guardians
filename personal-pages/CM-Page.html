@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Персональная открытка</title>
-    <!-- ВОТ СЮДА вставляется favicon -->
-    <link rel="icon" href="../index-files/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../index-files/favicon.ico" type="image/x-icon">
 <style>
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
+}
+
+/* ▼ Кастомный шрифт */
+@font-face {
+    font-family: 'MyFont';
+    src: url('../index-files/rudew.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* Фон на весь экран */
@@ -53,25 +60,28 @@ body {
     object-fit: cover;
 }
 
-/* Точные размеры правых картинок */
-.right-column img:nth-child(1) {
+/* Верхняя правая картинка с иконками */
+.top-banner {
     width: 718px;
     height: 125px;
-    position: relative; /* контейнер для иконок сверху */
+    position: relative;
+    z-index: 3; /* иконки поверх всего */
 }
 
-.right-column img:nth-child(2) {
+/* Точные размеры нижней картинки */
+.bottom-banner {
     width: 713px;
     height: 340px;
 }
 
-/* Контейнер для маленьких иконок поверх правой верхней картинки */
+/* Контейнер для маленьких иконок */
 .icons-row {
     position: absolute;
     display: flex;
     gap: 7px;
-    top: 60px;    /* отступ от верхнего края картинки */
-    left: 25px;   /* отступ от левого края картинки */
+    top: 60px;
+    left: 25px;
+    z-index: 4; /* всегда сверху */
 }
 
 /* Маленькие иконки */
@@ -91,12 +101,12 @@ body {
     border-radius: 4px;
 }
 
-/* Текст поверх иконки */
 .icons-row .icon span {
     position: absolute;
-    bottom: -20px; /* под иконкой */
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
+    width: 50px;
     font-size: 12px;
     color: #fff;
     opacity: 0;
@@ -104,13 +114,43 @@ body {
     pointer-events: none;
 }
 
-/* Hover эффект */
 .icons-row .icon:hover {
     transform: scale(1.1);
 }
 
 .icons-row .icon:hover span {
     opacity: 1;
+}
+
+/* ▼ Нижняя картинка с текстом */
+.text-block {
+    position: relative;
+    width: 713px;
+    height: 340px;
+    z-index: 1; /* нижний слой */
+}
+
+.text-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 100%;        /* ширина текста */
+    color: white;
+    font-size: 18px;
+    text-align: left;  /* теперь текст с левого края */
+    line-height: 1.2;
+    font-family: 'MyFont', sans-serif;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    padding-left: 0; /* отступ слева внутри блока */
+    white-space: pre-wrap;
+    z-index: 2;
 }
 </style>
 </head>
@@ -120,50 +160,61 @@ body {
     <div class="left-img">
         <img src="../avatars/CM.webp" alt="Портрет">
     </div>
-    <div class="right-column">
-        <div style="position: relative; display: inline-block;">
-            <img src="../icons/for-icons.webp" alt="Правая верхняя">
 
-            <!-- Ряд маленьких иконок поверх правой верхней картинки -->
+    <div class="right-column">
+        <!-- Правая верхняя картинка с иконками -->
+        <div style="position: relative; display: inline-block;">
+            <img class="top-banner" src="../icons/for-icons.webp" alt="Правая верхняя">
+
             <div class="icons-row">
                 <div class="icon">
                     <img src="../icons/strength.webp" alt="сила">
-                    <span>Текст 1</span>
+                    <span>Сила <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/weapon.webp" alt="орудие">
-                    <span>Текст 2</span>
+                    <span>Орудие <br> Кошачья Лапка</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/dead-stress.webp" alt="уровень стресса">
-                    <span>Текст 3</span>
+                    <span>Стресс <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/intel-core-i9.webp" alt="ум">
-                    <span>Текст 4</span>
+                    <span>Ум <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/my-muscles-and-charisma.webp" alt="харизма">
-                    <span>Текст 5</span>
+                    <span>Харизма <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/dexter.webp" alt="ловкость">
-                    <span>Текст 6</span>
+                    <span>Ловкость <br> 10 из 10</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/friend.webp" alt="компаньон">
-                    <span>Текст 7</span>
+                    <span>Компаньон <br> Три Кота</span>
                 </div>
                 <div class="icon">
                     <img src="../icons/shield.webp" alt="броня">
-                    <span>Текст 8</span>
+                    <span>Броня <br> 10 из 10</span>
                 </div>
             </div>
-
         </div>
 
-        <!-- Правая нижняя картинка -->
-        <img src="../icons/for-text.webp" alt="Текст">
+        <!-- Правая нижняя картинка с текстом -->
+        <div class="text-block">
+            <img class="bottom-banner" src="../icons/for-text.webp" alt="Текст">
+            <div class="card-text">
+                Сергей М. - Сеньон-помидор с большим опытом в сражениях.<br>
+                Орудие - Кошачья Лапка - мягкая, но таит в себе опасность.<br>
+                Компаньон - Три Кота; странно, у всех котов по 4 лапы. Откуда тогда...🌟<br>
+                Доп. от Трех Котов:<br>
+                +10 к ловкости за 1 шт<br>
+                +10 к харизме за 1шт<br>
+                -100 голды за содержание 1 шт
+            </div>
+        </div>
     </div>
 </div>
 
