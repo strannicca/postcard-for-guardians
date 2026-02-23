@@ -152,6 +152,37 @@ body {
     white-space: pre-wrap;
     z-index: 2;
 }
+
+/* ▼ Кастомное всплывающее уведомление */
+#custom-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* поверх всего */
+}
+
+#alert-box {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'MyFont', sans-serif;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#alert-box button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -218,6 +249,29 @@ body {
         </div>
     </div>
 </div>
+
+<!-- ▼ Кастомное всплывающее уведомление -->
+<div id="custom-alert">
+    <div id="alert-box">
+        <p>Иконки скиллов интерактивны. На них нужно навести мышкой.</p>
+        <button id="alert-ok">Ок</button>
+    </div>
+</div>
+
+<script>
+window.onload = function() {
+    const alertDiv = document.getElementById("custom-alert");
+    const okBtn = document.getElementById("alert-ok");
+
+    // показываем уведомление (по умолчанию оно видно)
+    alertDiv.style.display = "flex";
+
+    // при нажатии на кнопку "Ок" скрываем уведомление
+    okBtn.onclick = function() {
+        alertDiv.style.display = "none";
+    };
+};
+</script>
 
 </body>
 </html>
