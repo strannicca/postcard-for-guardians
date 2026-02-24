@@ -70,6 +70,12 @@ body {
 .grid a:nth-child(8) { grid-column: 3 / 4; grid-row: 3 / 4; }
 .grid a:nth-child(9) { grid-column: 4 / 5; grid-row: 3 / 4; }
 
+/* Последняя картинка — центрируем относительно 2-й и 3-й во втором ряду */
+.grid a:nth-child(10) {
+    grid-column: 2 / 4; /* занимает 2 средние колонки */
+    grid-row: 4 / 5;
+}
+
 /* Картинки */
 .grid img {
     width: 102px;
